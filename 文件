@@ -1,0 +1,51 @@
+<html>
+<head>
+<script type="text/javascript">
+    function reImg() {
+        var img = document.getElementById("Img");
+        img.src = "image.jsp?code=" + Math.random();
+    }
+</script>
+</head>
+<body>
+    <div align="center" style="padding-top: 2em">
+        <span style="font-size: 3em">用户登录/LOGIN</span> <br>
+        ——————————————————————
+        <form action="login_check.jsp" method="post">
+            <table style="padding-left: 1em;">
+                <tr>
+                    <td>用户名：</td>
+                    <td><input type=text name=name />
+                    </td>
+                </tr>
+                <tr>
+                    <td>密&nbsp;&nbsp;&nbsp;码：</td>
+                    <td><input type="password" name="password" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>验证码：</td>
+                    <td><input type="text" name="yanzhengma" /><img border=0
+                        id="Img" src="image.jsp" alt="验证码"><a href="#"
+                        onclick="reImg();">看不清，请点击刷新</a>
+                    </td>
+                </tr>
+            </table>
+            <table style="padding-left: 0.6em">
+                <tr>
+                    <td><input type=radio name=type value=partment>部门 <input
+                        type=radio name=type value=teacher>教师 <input type=radio
+                        name=type value=student checked>学生 <input type=radio
+                        name=type value=guest>访客</td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="登录" /> <input type="reset"
+                        value="重置" />
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>
+
