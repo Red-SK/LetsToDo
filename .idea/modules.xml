@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/Double-Ten.iml" filepath="$PROJECT_DIR$/.idea/Double-Ten.iml" group="Double-Ten" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/roll.iml" filepath="$PROJECT_DIR$/.idea/modules/roll.iml" group="Double-Ten/roll" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/roll/roll_main.iml" filepath="$PROJECT_DIR$/.idea/modules/roll/roll_main.iml" group="Double-Ten/roll" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/roll/roll_test.iml" filepath="$PROJECT_DIR$/.idea/modules/roll/roll_test.iml" group="Double-Ten/roll" />
+    </modules>
+  </component>
+</project>
