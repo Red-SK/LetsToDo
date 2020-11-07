@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Z班在线投票</title>
+</head>
+
+<body style="background-image:url(img/bk1.jpg); background-size:100%; background-repeat: no-repeat;">
+
+    <body>
+        <!--<div align="center"><img src="head2.jpg" /></div>-->
+        <div align="center">
+            <h1 style="margin-top: 100px;margin-bottom: 100px">Z班在线投票</h1>
+            <table id="main" style="margin-top: 200px">
+                <tr>
+                    <td>
+                        <input type="checkbox" name="option" />A1组
+                    </td>
+                    <td style="width:550px">
+                        <div id=0 style="background-color:#acd6ff; width:0; height:20px; border-width:0px;">
+                        </div>
+                    </td>
+                    <td>
+                        <label id="label0">0</label>票
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" name="option" />A2组
+                    </td>
+                    <td>
+                        <div id=1 style="background-color:#0066cc; height:20px; width:0; border-width:0px; border-color:blue; border-style:solid ; text-align:right;">
+                        </div>
+
+                    </td>
+                    <td>
+                        <label id="label1">0</label>票
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" name="option" />A3组
+                    </td>
+                    <td>
+                        <div id=2 style="background-color:#ff7575; height:20px;width:0;  border-width:0px; border-color:blue; border-style:solid ; text-align:right;">
+                        </div>
+
+                    </td>
+                    <td>
+                        <label id="label2">0</label>票
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" name="option" />A4组
+                    </td>
+                    <td>
+                        <div id=3 style="background-color:#5cadad;height:20px;width:0; border-width:0px; border-color:blue; border-style:solid ; text-align:right;">
+                        </div>
+
+                    </td>
+                    <td>
+                        <label id="label3">0</label>票
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" name="option" />A5组
+                    </td>
+                    <td style="width:550px">
+                        <div id=4 style="background-color:#acd6ff; width:0; height:20px; border-width:0px;">
+                        </div>
+                    </td>
+                    <td>
+                        <label id="label4">0</label>票
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" name="option" />A6组
+                    </td>
+                    <td style="width:550px">
+                        <div id=5 style="background-color:#acd6ff; width:0; height:20px; border-width:0px;">
+                        </div>
+                    </td>
+                    <td>
+                        <label id="label5">0</label>票
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" name="option" />A7组
+                    </td>
+                    <td style="width:550px">
+                        <div id=6 style="background-color:#acd6ff; width:0; height:20px; border-width:0px;">
+                        </div>
+                    </td>
+                    <td>
+                        <label id="label6">0</label>票
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" name="option" />A8组
+                    </td>
+                    <td style="width:550px">
+                        <div id=7 style="background-color:#acd6ff; width:0; height:20px; border-width:0px;">
+                        </div>
+                    </td>
+                    <td>
+                        <label id="label7">0</label>票
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" name="option" />A9组
+                    </td>
+                    <td style="width:550px">
+                        <div id=8 style="background-color:#acd6ff; width:0; height:20px; border-width:0px;">
+                        </div>
+                    </td>
+                    <td>
+                        <label id="label8">0</label>票
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" name="option" />A10组
+                    </td>
+                    <td style="width:550px">
+                        <div id=9 style="background-color:#acd6ff; width:0; height:20px; border-width:0px;">
+                        </div>
+                    </td>
+                    <td>
+                        <label id="label9">0</label>票
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" name="option" />A11组
+                    </td>
+                    <td style="width:550px">
+                        <div id=10 style="background-color:#acd6ff; width:0; height:20px; border-width:0px;">
+                        </div>
+                    </td>
+                    <td>
+                        <label id="label10">0</label>票
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <p>
+                            <input type="submit" value="确认投票" onclick="vote()" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </body>
+    <script type="text/javascript">
+        //在每个投票选项后面写了个div，用div的宽度来代表当前该选项的投票数。
+        function vote() { //函数vote，当点击确认投票的时候，调用vote方法
+
+            //for循环的条件是，所有投票选项的个数。
+            var sum = 0;
+            for (var i = 0; i < document.getElementsByName("option").length; i++) {
+
+                var label = "label" + i; //lable标签里面写的是当前的投票数目。
+                var num = document.getElementById(label).innerText; //获取到当前的票数
+                sum += parseInt(num);
+                if (document.getElementsByName("option")[i].checked == true)
+                    sum += 1;
+
+            }
+            for (var i = 0; i < document.getElementsByName("option").length; i++) {
+                if (sum <= 10) {
+                    if (document.getElementsByName("option")[i].checked == true) {
+
+                        var width = document.getElementById(i).style.width; //获取到当前选项的宽度。
+                        width = parseInt(width); //将宽度转化为int型，因为获取到的width的单位是px
+                        width += 3; //改变width的值，这里就是定义每次投票的进度条的增速
+                        document.getElementById(i).style.width = width + "px"; //修改原div的宽度
+
+                        var label = "label" + i; //lable标签里面写的是当前的投票数目。
+                        var num = document.getElementById(label).innerText; //获取到当前的票数
+                        document.getElementById(label).innerText = ++num; //票数加1，并修改原值
+                    }
+                } else {
+                    alert("总票数大于10");
+                    break;
+                }
+            }
+
+        }
+    </script>
+
+</html>
