@@ -3,23 +3,26 @@ const app = getApp()
 wx.cloud.init()
 const db = wx.cloud.database()
 const todos = db.collection('lists')
+var x  = {}
 Page({
   data: {
     text: "This is page data."
   },
-  gettodos:function(){
-  
+  //从数据库中获取当前用户的所有事项数据
+  setfromDB:function(){
+
     db.collection('lists').where({
       _openid: 'user-open-id',
       done: false
     })
     .get().then(res=>{
       app.globalData.tmp=  res.data;
+    //  console.log(app.globalData.tmp);
+ 
     })
-  
   },
   onLoad: function(options) {
-   this.gettodos();
+   this.setfromDB();
   },
   onShow: function() {
     // Do something when page show.
@@ -31,6 +34,10 @@ Page({
     // Do something when page hide.
   },
   onUnload: function() {
+    wx.setStorageSync({
+      key:'todos',
+      value:app.globalData.tmp,
+    })
     // Do something when page close.
   },
   onPullDownRefresh: function() {
@@ -69,7 +76,6 @@ Page({
     success: res => {
       console.log('[云函数] [login] user openid: ', res.result.openid)
       app.globalData.openid = res.result.openid
-
     },
     fail: err => {
       console.error('[云函数] [login] 调用失败', err)

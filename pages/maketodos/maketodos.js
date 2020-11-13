@@ -1,3 +1,4 @@
+var util = require('../../utils/util.js');  
 var app = getApp()
 wx.cloud.init()
 const db = wx.cloud.database()
@@ -11,15 +12,7 @@ Page({
     multiArray: [['今天', '明天', '3-2', '3-3', '3-4', '3-5'], [0, 1, 2, 3, 4, 5, 6], [0, 10, 20]],
     multiIndex: [0, 0, 0],
   },
-  getfromdatabase:function(){
-    db.collection('lists').where({
-      _openid: 'user-open-id',
-      done: false
-    })
-    .get().then(res=>{
-      app.globalData.tmp=  res.data;
-    })
-  },
+  
   onLoad: function(options) {
     // Do some initialize when page load.
   },
@@ -30,9 +23,9 @@ Page({
     // Do something when page ready.
   },
   onHide: function() {
-    // Do something when page hide.
   },
   onUnload: function() {
+    console.log("onUnload")
     // Do something when page close.
   },
   onPullDownRefresh: function() {
@@ -234,11 +227,33 @@ Page({
     console.log('picker发送选择改变，携带值为', PickTime)
   },
   formSubmit(e) {
+    var time = util.formatTime(new Date());
     console.log('form发生了submit事件，携带数据为', e.detail.value)
+    if(e.detail.value.todo.length==0){ //如果submit的 todo为空的return 
+      wx.switchTab({
+        url: '/pages/todos/todos',
+      })
+      return ;
+    }
+    var x  = {
+      _id : e.detail.value.todo + time,
+      todo:e.detail.value.todo,
+      due: PickTime,
+      reward:e.detail.value.reward,
+      done: false ,
+      remind: e.detail.value.remind,
+    }
+   
+
+  
+    app.globalData.tmp[app.globalData.tmp.length] = x;
+
+    wx.setStorageSync('reward', )
+    wx.setStorageSync('todos', app.globalData.tmp)
     db.collection('lists').add({
       // data 字段表示需新增的 JSON 数据
       data: {
-        // _id: 'todo-identifiant-aleatoire', // 可选自定义 _id，在此处场景下用数据库自动分配的就可以了
+         _id:x._id,
         todo:e.detail.value.todo,
         due: PickTime,
         reward:e.detail.value.reward,
@@ -249,7 +264,8 @@ Page({
         console.log(res)
       }
     })
-    this.getfromdatabase();
+   
+    //跳转回todos界面
     wx.switchTab({
       url: '/pages/todos/todos',
     })

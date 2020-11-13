@@ -2,45 +2,43 @@ const app = getApp()
 wx.cloud.init()
 const db = wx.cloud.database()
 const todos = db.collection('lists')
-var tmp ={}
+var tmp = {};
 Page({
   data: {
     checkboxItems: [
-    //    {name: 'standard is dealt for u.', value: '0', checked: true},
-     //   {name: 'standard is dealicient for u.', value: '1'},
+    ],
+    checkboxItems2:[
     ],
 },
+  //跳转创建事项界面
   maketodos:function(){
     wx.navigateTo({
       url: '/pages/maketodos/maketodos',
     })
   },
-  onLoad: function(options) {
- 
-    //console.log(app.globalData.tmp);
-    this.gettodos();
-    console.log("ONLOAD")
-   
-   // console.log(this.data);
-  },
-
+  //设置当前界面的事项列表
   gettodos:function(){
-    tmp = app.globalData.tmp;
-
     for(var i = 0 ; i<tmp.length;i++){
       let x =  "checkboxItems["+i+"].name";
       let x1 = "checkboxItems["+i+"].value";
       let x2 ="checkboxItems["+i+"].checked";
       this.setData({
         [x]: tmp[i].todo,
-        [x1]: "0",
-        [x2]:tmp[i].checked,
+        [x1]: tmp[i]._id,
+        [x2]:tmp[i].done,
      });
-    }
+    }  
   },
-  onShow: function() {
+
+  onLoad: function(options) {
+    
+    tmp =wx.getStorageSync('todos')
     this.gettodos();
-    console.log(tmp);
+  },
+
+  onShow: function() {
+    tmp =wx.getStorageSync('todos')
+    this.gettodos();
   },
 
     // Do something when page show.
@@ -82,23 +80,50 @@ Page({
     })
   },
  
-
-
+//勾选后的操作
 checkboxChange: function (e) {
     console.log('checkbox发生change事件，携带value值为：', e.detail.value);
-  
+
     var checkboxItems = this.data.checkboxItems, values = e.detail.value;
     for (var i = 0, lenI = checkboxItems.length; i < lenI; ++i) {
         checkboxItems[i].checked = false;
-
         for (var j = 0, lenJ = values.length; j < lenJ; ++j) {
             if(checkboxItems[i].value == values[j]){
                 checkboxItems[i].checked = true;
+                db.collection('lists').doc(values[j]).remove({
+                  success: function(res) { 
+                    console.log(res)
+                  }
+                })
+                
                 break;
             }
+          //   this.setData({
+          //     checkboxItems: checkboxItems,
+          // });
         }
     }
+},
+checkboxChange2: function (e) {
+  console.log('checkbox发生change事件，携带value值为：', e.detail.value);
 
-    
+  var checkboxItems = this.data.checkboxItems, values = e.detail.value;
+  for (var i = 0, lenI = checkboxItems.length; i < lenI; ++i) {
+      checkboxItems[i].checked = false;
+      for (var j = 0, lenJ = values.length; j < lenJ; ++j) {
+          if(checkboxItems[i].value == values[j]){
+              checkboxItems[i].checked = true;
+              db.collection('lists').doc(values[j]).remove({
+                success: function(res) { 
+                  console.log(res)
+                }
+              })
+              break;
+          }
+        //   this.setData({
+        //     checkboxItems: checkboxItems,
+        // });
+      }
+  }
 },
 })

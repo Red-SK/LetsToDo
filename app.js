@@ -5,7 +5,7 @@ App({
     addGlobalClass: true,
     multipleSlots: true
   },
-  
+
   onLaunch: function () {
   
     // 展示本地存储能力
