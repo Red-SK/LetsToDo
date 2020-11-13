@@ -1,27 +1,17 @@
-
-const app = getApp()
-wx.cloud.init()
-const db = wx.cloud.database()
-const todos = db.collection('lists')
 Page({
   data: {
     text: "This is page data."
   },
-  gettodos:function(){
-  
-    db.collection('lists').where({
-      _openid: 'user-open-id',
-      done: false
-    })
-    .get().then(res=>{
-      app.globalData.tmp=  res.data;
-    })
-  
-  },
   onLoad: function(options) {
-   this.gettodos();
+    // Do some initialize when page load.
   },
   onShow: function() {
+    if (typeof this.getTabBar === 'function' &&
+    this.getTabBar()) {
+    this.getTabBar().setData({
+      selected: 1
+    })
+    }
     // Do something when page show.
   },
   onReady: function() {
@@ -61,32 +51,7 @@ Page({
       // this is setData callback
     })
   },
-  onGetOpenid: function() {
-   
-    wx.cloud.callFunction({
-    name: 'login',
-    data: {},
-    success: res => {
-      console.log('[云函数] [login] user openid: ', res.result.openid)
-      app.globalData.openid = res.result.openid
-
-    },
-    fail: err => {
-      console.error('[云函数] [login] 调用失败', err)
-      wx.navigateTo({
-        url: '../deployFunctions/deployFunctions',
-      })
-    }
-  })
-  wx.switchTab({
-    url:'/pages/todos/todos',
-    success: function (e) {
-      var page = getCurrentPages().pop();
-      if (page == undefined || page == null) return;
-      page.onLoad();
-    }
-  })
+  customData: {
+    hi: 'MINA'
   }
 })
-
-

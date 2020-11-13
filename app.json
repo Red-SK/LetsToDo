@@ -1,14 +1,55 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/todos/todos",
+    "pages/clock/clock",
+    "pages/mine/mine",
+    "pages/calendar/calendar",
+    "pages/maketodos/maketodos"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "Weixin",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "custom": true,
+    "color": "#7A7E83",
+    "selectedColor": "#3cc51f",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/todos/todos",
+        "iconPath": "images/todosOFF.png",
+        "selectedIconPath": "images/todos.png",
+        "text": "todos"
+      },
+      {
+        "pagePath": "pages/clock/clock",
+        "iconPath": "images/clockOFF.png",
+        "selectedIconPath": "images/clock.png",
+        "text": "clock"
+      },
+      {
+        "pagePath": "pages/calendar/calendar",
+        "iconPath": "images/calendarOFF.png",
+        "selectedIconPath": "images/calendar.png",
+        "text": "calendar"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "iconPath": "images/mineOFF.png",
+        "selectedIconPath": "images/mine.png",
+        "text": "mine"
+      }
+    ]
   },
   "style": "v2",
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "usingComponents": {},
+  "useExtendedLib": {
+    "weui": true
+  }
 }
