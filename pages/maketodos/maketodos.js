@@ -25,7 +25,6 @@ Page({
   onHide: function() {
   },
   onUnload: function() {
-    console.log("onUnload")
     // Do something when page close.
   },
   onPullDownRefresh: function() {
@@ -226,34 +225,42 @@ Page({
     PickTime = startDate;
     console.log('picker发送选择改变，携带值为', PickTime)
   },
+
+
+  //提交表单方法——————————————————————————————————————————————————————————
   formSubmit(e) {
     var time = util.formatTime(new Date());
     console.log('form发生了submit事件，携带数据为', e.detail.value)
-    if(e.detail.value.todo.length==0){ //如果submit的 todo为空的return 
+    //如果submit的 todo为空的return 
+    if(e.detail.value.todo.length==0){ 
       wx.switchTab({
         url: '/pages/todos/todos',
       })
       return ;
     }
-    var x  = {
-      _id : e.detail.value.todo + time,
-      todo:e.detail.value.todo,
-      due: PickTime,
-      reward:e.detail.value.reward,
-      done: false ,
-      remind: e.detail.value.remind,
-    }
-   
-
   
-    app.globalData.tmp[app.globalData.tmp.length] = x;
-
-    wx.setStorageSync('reward', )
-    wx.setStorageSync('todos', app.globalData.tmp)
+    //修改本地缓存
+    var tmp = wx.getStorageSync('todos')
+    //获取最后一个元素的下标
+    var index=0;
+    for(var i in tmp){
+      index++;
+    }
+    console.log(index)
+    var x  ={
+      "name":e.detail.value.todo,
+      "value":e.detail.value.todo + time,
+      "checked":false,
+      "time":PickTime,
+    }
+    tmp[index] = x ;
+  
+    wx.setStorageSync('todos', tmp)
+    //同时修改对应数据库
     db.collection('lists').add({
       // data 字段表示需新增的 JSON 数据
       data: {
-         _id:x._id,
+        _id:e.detail.value.todo + time,
         todo:e.detail.value.todo,
         due: PickTime,
         reward:e.detail.value.reward,
@@ -264,12 +271,15 @@ Page({
         console.log(res)
       }
     })
-   
     //跳转回todos界面
     wx.switchTab({
       url: '/pages/todos/todos',
     })
   },
+//——————————————————————————————————————————————————————————
+
+
+
   pickerTap:function() {
     date = new Date();
 

@@ -1,6 +1,18 @@
 button{
-  margin-top: 30rpx;
-  margin-bottom: 30rpx;
+width: 200rpx;  
+        padding:8px;  
+        background-color: #008c8c;  
+        border-color: #357ebd;  
+        color: #fff;  
+        -moz-border-radius: 10rpx;  
+        -webkit-border-radius: 10rpx;  
+        border-radius: 10rpx; /* future proofing */  
+        -khtml-border-radius: 10rpx; /* for old Konqueror browsers */  
+        text-align: center;  
+        vertical-align: middle;  
+        border: 1px solid transparent;  
+        font-weight: 900;  
+        font-size:125%  
 }
 .button-sp-area{
   margin: 0 auto;
@@ -9,3 +21,14 @@ button{
 .mini-btn{
   margin-right: 10rpx;
 }
+
+.login-icon{
+  
+
+  display:flex;
+  height: 755rpx;                   
+  justify-content: center;
+  align-items:center;
+}
+
+

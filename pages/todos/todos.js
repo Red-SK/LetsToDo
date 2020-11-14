@@ -1,69 +1,89 @@
 const app = getApp()
 wx.cloud.init()
 const db = wx.cloud.database()
-const todos = db.collection('lists')
-var tmp = {};
+
 Page({
   data: {
     checkboxItems: [
     ],
-    checkboxItems2:[
+    checkboxItems2: [
     ],
-},
+  },
   //跳转创建事项界面
-  maketodos:function(){
+  maketodos: function () {
     wx.navigateTo({
       url: '/pages/maketodos/maketodos',
     })
   },
   //设置当前界面的事项列表
-  gettodos:function(){
-    for(var i = 0 ; i<tmp.length;i++){
-      let x =  "checkboxItems["+i+"].name";
-      let x1 = "checkboxItems["+i+"].value";
-      let x2 ="checkboxItems["+i+"].checked";
+  settodolist: function () {
+
+    var todolist = wx.getStorageSync('todos')
+    this.setData({
+      checkboxItems :[]
+    })
+  
+    for (var i in todolist) {
+      let x = "checkboxItems[" + i + "].name";
+      let x1 = "checkboxItems[" + i + "].value";
+      let x2 = "checkboxItems[" + i + "].checked";
+      let x3 = "checkboxItems[" + i + "].time";
       this.setData({
-        [x]: tmp[i].todo,
-        [x1]: tmp[i]._id,
-        [x2]:tmp[i].done,
-     });
-    }  
+        [x]: todolist[i].name,
+        [x1]: todolist[i].value,
+        [x2]: todolist[i].checked,
+        [x3]: todolist[i].time,
+      })
+
+    }
+  },
+  setreward: function () {
+    var reward = wx.getStorageSync('reward')
+    for (var i in reward) {
+      let x = "checkboxItems2[" + i + "].name";
+      let x1 = "checkboxItems2[" + i + "].value";
+      let x2 = "checkboxItems2[" + i + "].checked";
+      this.setData({
+        [x]: reward[i].name,
+        [x1]: reward[i].value,
+        [x2]: reward[i].checked,
+      })
+    }
+  },
+  onLoad: function (options) {
+    this.settodolist();
+    this.setreward();
+    console.log(this.data)
   },
 
-  onLoad: function(options) {
-    
-    tmp =wx.getStorageSync('todos')
-    this.gettodos();
+  onShow: function () {
+    this.settodolist();
+    this.setreward();
   },
 
-  onShow: function() {
-    tmp =wx.getStorageSync('todos')
-    this.gettodos();
-  },
-
-    // Do something when page show.
-  onReady: function() {
+  // Do something when page show.
+  onReady: function () {
     // Do something when page ready.
   },
-  onHide: function() {
+  onHide: function () {
     // Do something when page hide.
   },
-  onUnload: function() {
+  onUnload: function () {
     // Do something when page close.
   },
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
     // Do something when pull down.
   },
-  onReachBottom: function() {
+  onReachBottom: function () {
     // Do something when page reach bottom.
   },
   onShareAppMessage: function () {
     // return custom share data when user share.
   },
-  onPageScroll: function() {
+  onPageScroll: function () {
     // Do something when page scroll
   },
-  onResize: function() {
+  onResize: function () {
     // Do something when page resize
   },
   onTabItemTap(item) {
@@ -72,58 +92,34 @@ Page({
     console.log(item.text)
   },
   // Event handler.
-  viewTap: function() {
+  viewTap: function () {
     this.setData({
       text: 'Set some data for updating view.'
-    }, function() {
- 
+    }, function () {
+
     })
   },
- 
-//勾选后的操作
-checkboxChange: function (e) {
-    console.log('checkbox发生change事件，携带value值为：', e.detail.value);
 
-    var checkboxItems = this.data.checkboxItems, values = e.detail.value;
-    for (var i = 0, lenI = checkboxItems.length; i < lenI; ++i) {
-        checkboxItems[i].checked = false;
-        for (var j = 0, lenJ = values.length; j < lenJ; ++j) {
-            if(checkboxItems[i].value == values[j]){
-                checkboxItems[i].checked = true;
-                db.collection('lists').doc(values[j]).remove({
-                  success: function(res) { 
-                    console.log(res)
-                  }
-                })
-                
-                break;
-            }
-          //   this.setData({
-          //     checkboxItems: checkboxItems,
-          // });
-        }
-    }
-},
-checkboxChange2: function (e) {
-  console.log('checkbox发生change事件，携带value值为：', e.detail.value);
-
-  var checkboxItems = this.data.checkboxItems, values = e.detail.value;
-  for (var i = 0, lenI = checkboxItems.length; i < lenI; ++i) {
-      checkboxItems[i].checked = false;
-      for (var j = 0, lenJ = values.length; j < lenJ; ++j) {
-          if(checkboxItems[i].value == values[j]){
-              checkboxItems[i].checked = true;
-              db.collection('lists').doc(values[j]).remove({
-                success: function(res) { 
-                  console.log(res)
-                }
-              })
-              break;
-          }
-        //   this.setData({
-        //     checkboxItems: checkboxItems,
-        // });
+  //勾选后的操作
+  checkboxChange: function (e) {
+    var tmptodolist = wx.getStorageSync('todos')
+    console.log(tmptodolist)
+    console.log('checkbox发生change事件，携带value值为：', e.detail.value); //对应的事件ID
+    var tmp = {};
+    var index = 0;
+    var del;
+    for (var i in tmptodolist) {
+      if (tmptodolist[i].value != e.detail.value) {
+        tmp[index++] = tmptodolist[i];
+      }else {
+        del = tmptodolist[i].value;
       }
-  }
-},
+    }
+    console.log(del)
+    wx.setStorageSync('todos', tmp)
+    db.collection('lists').doc(del).remove().then(res=>{
+    	console.log(res)
+  	})
+    this.onShow();
+  },
 })
