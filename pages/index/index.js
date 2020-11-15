@@ -10,29 +10,6 @@ Page({
   },
   //从数据库中获取当前用户的所有事项数据
   setfromDB:function(){
-
-    db.collection('lists').where({
-      _openid: 'user-open-id',
-      done: false
-    })
-    .get().then(res=>{
-      //从数据库获取数据，并存储本地缓存
-      wx.clearStorageSync()
-      var tmp  = res.data;
-      var x  ={};
-      for(var i = 0 ;  i < tmp.length;i++)
-      {
-        x[i] = {
-          "name": tmp[i].todo,
-          "value": tmp[i]._id,
-          "checked" :tmp[i].done,
-          "time" :tmp[i].due,
-          "reward":tmp[i].reward
-        }
-      }
-  
-      wx.setStorageSync('todos',x)
-    })
     db.collection('reward').where({
       _openid: 'user-open-id',
       done: false
@@ -48,6 +25,29 @@ Page({
       }
       wx.setStorageSync('reward',x)
     })
+    db.collection('lists').where({
+      _openid: 'user-open-id',
+      done: false
+    })
+    .get().then(res=>{
+      //从数据库获取数据，并存储本地缓存
+     
+      var tmp  = res.data;
+      var x  ={};
+      for(var i = 0 ;  i < tmp.length;i++)
+      {
+        x[i] = {
+          "name": tmp[i].todo,
+          "value": tmp[i]._id,
+          "checked" :tmp[i].done,
+          "time" :tmp[i].due,
+          "reward":tmp[i].reward
+        }
+      }
+  
+      wx.setStorageSync('todos',x)
+    })
+ 
   },
   onLoad: function(options) {
    this.setfromDB();

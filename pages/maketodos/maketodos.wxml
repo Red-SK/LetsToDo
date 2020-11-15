@@ -1,47 +1,44 @@
-
-<view class="container">
-  
-
-  <view class="page-body">
-    <form catchsubmit="formSubmit" catchreset="formReset">
-      <view class="page-section page-section-gap">
-        <view class="page-section-title">提醒</view>
-        <switch name="remind"/>
+<view class="page-body">
+  <form catchsubmit="formSubmit" catchreset="formReset">
+    <view class="page-section">
+      <view class="page-section-title"></view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__bd"  >
+            <input class="weui-input" name="todo" placeholder="输入代办事项"  />
+          </view>
+        </view>
       </view>
-      <view class = "page-section">
-            <view class = 'pic'>时间选择器</view>
-        <picker class='time-picker'  mode="multiSelector" bindchange="bindStartMultiPickerChange" bindtap='pickerTap' bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
-          <view class="picker">
+    </view>
+    <view class="divLine"></view>
+    <view class="page-section page-section-gap">
+      <view class="page-section-title">提醒</view>
+      <switch name="remind" />
+    </view>
+
+    <view class="page-section">
+      <view class='pic'></view>
+      <picker class='time-picker' mode="multiSelector" bindchange="bindStartMultiPickerChange" bindtap='pickerTap'
+        bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+        <view class="picker">
           当前选择：{{startDate}}
         </view>
-          </picker>
-      </view>
-   
+      </picker>
+    </view>
 
-      <view class="page-section">
-        <view class="page-section-title">输入代办标题</view>
-        <view class="weui-cells weui-cells_after-title">
-          <view class="weui-cell weui-cell_input">
-            <view class="weui-cell__bd" style="margin: 30rpx 0" >
-              <input class="weui-input" name="todo" placeholder="这是一个输入框" />
-            </view>
+
+    <view class="page-section">
+      <view class="page-section-title">奖励事项</view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__bd" style="margin: 30rpx 0">
+            <input class="weui-input" name="reward" placeholder="这是一个输入框" />
           </view>
         </view>
       </view>
-      <view class="page-section">
-        <view class="page-section-title">奖励事项</view>
-        <view class="weui-cells weui-cells_after-title">
-          <view class="weui-cell weui-cell_input">
-            <view class="weui-cell__bd" style="margin: 30rpx 0" >
-              <input class="weui-input" name="reward" placeholder="这是一个输入框" />
-            </view>
-          </view>
-        </view>
-      </view>
-      <view class="btn-area">
-        <button style="margin: 30rpx 0" type="primary" formType="submit">Submit</button>
-      </view>
-    </form>
-  </view>
- 
+    </view>
+    <view class="btn-area">
+      <button style="margin: 30rpx 0" type="primary" formType="submit">Submit</button>
+    </view>
+  </form>
 </view>

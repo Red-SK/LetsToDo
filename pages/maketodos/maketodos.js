@@ -252,6 +252,7 @@ Page({
       "value":e.detail.value.todo + time,
       "checked":false,
       "time":PickTime,
+      "reward":e.detail.value.reward
     }
     tmp[index] = x ;
   

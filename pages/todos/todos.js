@@ -1,7 +1,8 @@
 const app = getApp()
+
 wx.cloud.init()
 const db = wx.cloud.database()
-
+var util = require('../../utils/util.js');
 Page({
   data: {
     checkboxItems: [
@@ -20,9 +21,9 @@ Page({
 
     var todolist = wx.getStorageSync('todos')
     this.setData({
-      checkboxItems :[]
+      checkboxItems: []
     })
-  
+
     for (var i in todolist) {
       let x = "checkboxItems[" + i + "].name";
       let x1 = "checkboxItems[" + i + "].value";
@@ -38,6 +39,9 @@ Page({
     }
   },
   setreward: function () {
+    this.setData({
+      checkboxItems2: []
+    })
     var reward = wx.getStorageSync('reward')
     for (var i in reward) {
       let x = "checkboxItems2[" + i + "].name";
@@ -102,24 +106,81 @@ Page({
 
   //勾选后的操作
   checkboxChange: function (e) {
+    var tmpreward = wx.getStorageSync('reward')
+    console.log(tmpreward)
     var tmptodolist = wx.getStorageSync('todos')
     console.log(tmptodolist)
     console.log('checkbox发生change事件，携带value值为：', e.detail.value); //对应的事件ID
     var tmp = {};
     var index = 0;
     var del;
+    var rewardtmp;
     for (var i in tmptodolist) {
       if (tmptodolist[i].value != e.detail.value) {
         tmp[index++] = tmptodolist[i];
-      }else {
+      } else {
         del = tmptodolist[i].value;
+        rewardtmp = tmptodolist[i];
       }
     }
-    console.log(del)
     wx.setStorageSync('todos', tmp)
-    db.collection('lists').doc(del).remove().then(res=>{
-    	console.log(res)
-  	})
+    db.collection('lists').doc(del).remove().then(res => {
+      console.log(res)
+    })
+
+    //如果奖励事项为空 ，则返回
+    var judge = rewardtmp.reward;
+    if (judge == "") {
+      this.onShow();
+      return;
+    }
+
+    //  -----分解奖励事项并设置缓存
+    var time = util.formatTime(new Date());
+    var index2 = 0;
+    //获取最后一个元素的下标
+    for (var i in tmpreward) {
+      index2++;
+    }
+    var x = {
+      "name": rewardtmp.reward,
+      "value": rewardtmp.reward + time,
+      "checked": false,
+    }
+    tmpreward[index2] = x;
+
+    wx.setStorageSync('reward', tmpreward)
+    //同时修改对应数据库
+    db.collection('reward').add({
+      // data 字段表示需新增的 JSON 数据
+      data: {
+        _id: rewardtmp.reward + time,
+        todo: rewardtmp.reward,
+        done: false,
+      },
+      success: function (res) {
+        console.log(res)
+      }
+    })
     this.onShow();
   },
+  checkboxChange2: function (e) {
+    console.log('checkbox发生change事件，携带value值为：', e.detail.value); //对应的事件ID
+    var tmpreward = wx.getStorageSync('reward')
+    var index = 0;
+    var changedreward = {}
+    var del;
+    for (var i in tmpreward) {
+      if (tmpreward[i].value != e.detail.value) {
+        changedreward[index++] = tmpreward[i]
+      } else {
+        del = tmpreward[i].value
+      }
+    }
+    wx.setStorageSync('reward', changedreward)
+    db.collection('reward').doc(del).remove().then(res => {
+      console.log(res)
+    })
+    this.onShow()
+  }
 })
