@@ -63,6 +63,7 @@ Page({
   onShow: function () {
     this.settodolist();
     this.setreward();
+
   },
 
   // Do something when page show.

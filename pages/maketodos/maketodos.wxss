@@ -1,11 +1,117 @@
 /*分割线样式*/
-.divLine{
+.divLine {
   background: #008c8c;
-  opacity: 0.8;
+  opacity: 0.4;
   height: 13rpx;
   width: 100%;
- }
-.weui-input{
+}
 
-  margin-bottom: 100rpx;
+.divLine-light {
+  background: #808080;
+  opacity: 0.1;
+  height: 5rpx;
+  width: 100%;
+}
+
+.weui-input {
+  margin-bottom: 130rpx;
+}
+
+.refresh-view {
+  z-index: 1;
+  color: #fff;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 28rpx;
+  border-style: none;
+  margin-bottom: 10rpx;
+}
+
+.refresh-view-hover {
+  background: #eee;
+}
+
+.page-section-reward {
+  margin-top: -5rpx;
+  height: 300rpx;
+  border: none;
+  padding: none;
+}
+
+.refresh-icon {
+  bottom: 10rpx;
+  right: 670rpx;
+  width: 75rpx;
+  height: 75rpx;
+  margin-top: 15rpx;
+  margin-bottom: 30rpx;
+}
+
+.wx-switch-input {
+  margin-top: 15rpx;
+  margin-left: 630rpx;
+  display: fixed;
+  margin-bottom: 10rpx;
+}
+
+.picktimeicon {
+  margin-top: 15rpx;
+  margin-right: 55rpx;
+  bottom: 10rpx;
+  right: 670rpx;
+  width: 75rpx;
+  height: 75rpx;
+}
+
+.picker {
+  font-size: 48rpx;
+  font-family: STKaiti;
+}
+
+.gameicon {
+  margin-top: 15rpx;
+  margin-right: 55rpx;
+  bottom: 10rpx;
+  right: 670rpx;
+  width: 75rpx;
+  height: 75rpx;
+}
+
+.btn-area {
+  margin-top: 200rpx;
+  height: 100rpx;
+}
+
+button {
+  width: 200rpx;
+  padding: 8px;
+  background-color: #008c8c;
+  border-color: #357ebd;
+  -moz-border-radius: 10rpx;
+  -webkit-border-radius: 10rpx;
+  border-radius: 10rpx;
+  /* future proofing */
+  -khtml-border-radius: 10rpx;
+  /* for old Konqueror browsers */
+  text-align: center;
+  vertical-align: middle;
+  border: 1px solid transparent;
+  font-weight: 900;
+  font-size: 125%
+}
+
+.button-sp-area {
+  margin: 0 auto;
+  width: 60%;
+}
+
+.mini-btn {
+  margin-right: 10rpx;
+}
+
+.weui-cells weui-cells_after-title {
+  margin-top: 30rpx;
 }

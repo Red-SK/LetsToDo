@@ -3,7 +3,6 @@ const app = getApp()
 wx.cloud.init()
 const db = wx.cloud.database()
 const todos = db.collection('lists')
-var x  = {}
 Page({
   data: {
     text: "This is page data."
@@ -51,8 +50,6 @@ Page({
   },
   onLoad: function(options) {
    this.setfromDB();
-    var x =  wx.getStorageSync('todos')
-   
   },
   onShow: function() {
     // Do something when page show.
