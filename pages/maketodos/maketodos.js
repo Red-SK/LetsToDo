@@ -67,10 +67,10 @@ Page({
         success(res) {
           console.log(res)
           console.log("before send")
-
           //调用sendmessage云函数
           wx.cloud.callFunction({
             name: "sendmessage",
+            
           }).then(res => {
             console.log("推送消息成功", res)
           }).catch(res => {

@@ -10,10 +10,10 @@ exports.main = async (event, context) => {
         lang: 'zh_CN',
         data: {
           thing1: {
-            value: event.data1,
+            value: '123131',
           },
           time2: {
-            value: event.data2
+            value: '10:11'
           }
         },
         templateId: 'D64ZZ89iJVDy26nZa7xpdytlbhbaJr8wDV4W2QWDo9k',
