@@ -1,0 +1,56 @@
+.sum{
+  display: flex;
+  flex-wrap: wrap;
+  width: 750rpx;
+  height: 350rpx;
+  border: 10rpx solid #eeeeee;
+}
+
+.sum .sum_item{
+  width: 375rpx;
+  height: 160rpx;
+  text-align: center;
+}
+
+.sum .sum_item .sum_item_title{
+  height: 120rpx;
+  line-height: 120rpx;
+  font-size: 30rpx;
+  color: black;
+}
+
+.sum .sum_item .sum_item_val{
+  height: 40rpx;
+  line-height: 40rpx;
+  color: #008C8C;
+}
+
+.detail{
+  width: 700rpx;
+  margin: 0 auto;
+}
+
+.detail_title{
+  display: flex;
+  height: 60rpx;
+  line-height: 60rpx;
+}
+
+.detail_title .detail_title_text{
+  font-size: 30rpx;
+  flex: 1;
+}
+
+.detail_title .detail_title_type{
+  font-size: 30rpx;
+  flex: 1;
+  text-align: right;
+}
+
+.detail_title .detail_title_type text{
+  padding-left: 10rpx;
+}
+
+.active{
+  color:#008C8C;
+}
