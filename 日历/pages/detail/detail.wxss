@@ -5,13 +5,16 @@
     align-items: flex-start;
     padding: 40rpx 20rpx;
 }
+
 .show-item .title {
     width: 150rpx;
-    color: #DDD
+    font-size: 33rpx;
+    color: #000000
 }
-.show-item .title,
+
 .show-item .content {
-    font-size: 32rpx;
+    font-size: 33rpx;
+    color: #000000;
 }
 
 .ball {

@@ -1,15 +1,16 @@
 .og-calendar {
-    background-color: #1D1D26;
-    color: #FFF;
+    background-color: #FFF;
+    color: rgb(0, 0, 0);
     padding: 0 0 40rpx 0;
 }
-.og-calendar .header {
+.og-calendar .header {/*日历导航栏*/
     position: relative;
     height: 120rpx;
     line-height: 120rpx;
-    font-size: 35rpx;
+    font-size: 37rpx;
     text-align: center;
-    background: #E14848
+    background: #009191;
+    color: #FFFFFF;
 }
 .og-calendar .header .month-pre,
 .og-calendar .header .month-next {
@@ -18,8 +19,8 @@
     width: 120rpx;
     height: 120rpx
 }
-.og-calendar .header .btn:active {
-    background: #D64343
+.og-calendar .header .btn:active {/*左右选择月份触发*/
+    background: #009191
 }
 .og-calendar .header .month-pre {
     left: 0;
@@ -58,14 +59,14 @@
     border-radius: 50%;
 }
 .og-calendar .body .col.active text {
-    border-color: #E04343;
+    border-color: #009191;
 }
 .og-calendar .body .col.old {
     color: #7A7A7F
 } 
 .og-calendar .body .col.current text,
 .og-calendar .body .col text:active {
-    background-color: #E04343;
+    background-color: #009191;
     color: #FFF;
 }
 
