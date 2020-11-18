@@ -15,7 +15,8 @@ Page({
     pauseShow:true,// 暂停按钮是否显示
     continueCancleShow:false,// 继续和放弃按钮是否显示
     timer:null, // 计时器
-    cateArr: [{
+    cateArr: [
+      {
         icon: 'work',
         text: '工作'
       },

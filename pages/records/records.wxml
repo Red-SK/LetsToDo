@@ -1,16 +1,16 @@
 <view class="sum">
   <view class="sum_item" wx:for="{{sum}}">
     <view class="sum_item_title">
-      今日番茄次数
+      {{item.title}}
     </view>
-    <view class="sum_item_val"> 
+    <view class="sum_item_val">
       {{item.val}}
     </view>
   </view>
 </view>
 
 <view class="detail">
-<!-- 标题 -->
+  <!-- 标题 -->
   <view class="detail_title">
     <view class="detail_title_text">分类统计</view>
     <view class="detail_title_type">
@@ -19,9 +19,23 @@
     </view>
   </view>
 
-<!-- 时间记录 -->
-  <view class="detail_list">
-  
+  <!-- 时间记录 -->
+  <view class="detail_list" wx:if="{{list.length > 0}}">
+    <!-- 遍历 list -->
+    <view class="list_item" wx:for="{{list}}">
+      <view class="list_item_date">{{item.date}}</view>
+      <!-- <view class="list_item_cate" wx:if="{{item.cate > -1}} ">{{cateArr[item.cate].text}}</view> -->
+      <!-- <view class="list_item_cate" wx:if="{{item.cate == -1}}">未定义</view> -->
+      <view  class="list_item_cate">
+        <view wx:if="{{item.cate > -1}} ">{{cateArr[item.cate].text}}</view>
+        <view wx:if="{{item.cate == -1}}">未定义</view>
+      </view>
+      <view class="list_item_time">{{item.time}}分钟</view>
+    </view>
+  </view>
+
+  <view class="detail_list" wx:if="{{list.length == 0}}">
+    暂无数据
   </view>
 
 </view>
