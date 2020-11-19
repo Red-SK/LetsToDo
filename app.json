@@ -5,7 +5,8 @@
     "pages/clock/clock",
     "pages/mine/mine",
     "pages/calendar/calendar",
-    "pages/maketodos/maketodos"
+    "pages/maketodos/maketodos",
+    "pages/records/records"
   ],
   "window": {
     "backgroundTextStyle": "light",

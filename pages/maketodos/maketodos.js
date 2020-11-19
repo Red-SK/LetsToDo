@@ -12,8 +12,6 @@ var nowday = year + "-" + month + "-" + day
 Page({
   data: {
     date: nowday
-    // multiArray: [['今天', '明天', '3-2', '3-3', '3-4', '3-5'], [0, 1, 2, 3, 4, 5, 6], [0, 10, 20]],
-    // multiIndex: [0, 0, 0],
   },
 
   onLoad: function (options) {
@@ -65,17 +63,17 @@ Page({
       wx.requestSubscribeMessage({
         tmplIds: ['D64ZZ89iJVDy26nZa7xpdytlbhbaJr8wDV4W2QWDo9k'],
         success(res) {
-          console.log(res)
-          console.log("before send")
-          //调用sendmessage云函数
-          wx.cloud.callFunction({
-            name: "sendmessage",
-            
-          }).then(res => {
-            console.log("推送消息成功", res)
-          }).catch(res => {
-            console.log("消息推送失败", res)
-          })
+          // console.log(res)
+          // console.log("before send")
+          // //调用sendmessage云函数
+          // wx.cloud.callFunction({
+          //   name: "sendmessage",
+        
+          // }).then(res => {
+          //   console.log("推送消息成功", res)
+          // }).catch(res => {
+          //   console.log("消息推送失败", res)
+          // })
         },
       })
     }

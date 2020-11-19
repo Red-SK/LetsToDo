@@ -9,7 +9,7 @@
     {
       "name": "myTrigger",
       "type": "timer",
-      "config": "*/30 * * * * * *"
+      "config": "*/20 * * * * * *"
     }
   ]
 }

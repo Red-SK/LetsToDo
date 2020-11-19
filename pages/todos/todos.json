@@ -4,6 +4,9 @@
     "mp-checkbox-group": "/miniprogram_npm/weui-miniprogram/checkbox-group/checkbox-group",
     "mp-checkbox":  "/miniprogram_npm/weui-miniprogram/checkbox/checkbox",
     "mp-cells":  "/miniprogram_npm/weui-miniprogram/cells/cells"
-    }
+    },
+    "navigationBarTitleText": "ToDo",
+    "navigationBarBackgroundColor":"#008C8C",
+    "navigationBarTextStyle":"white"
   
 }

@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "usingComponents": {},
+  "navigationBarTitleText": "创建",
+    "navigationBarBackgroundColor":"#008C8C",
+    "navigationBarTextStyle":"white"
 }
