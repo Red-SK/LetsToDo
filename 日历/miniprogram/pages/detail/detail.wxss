@@ -1,0 +1,24 @@
+.show-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 40rpx 20rpx;
+}
+
+.show-item .title {
+  width: 150rpx;
+  font-size: 33rpx;
+  color: #000000
+}
+
+.show-item .content {
+  font-size: 33rpx;
+  color: #000000;
+}
+
+.ball {
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 50%;
+}
