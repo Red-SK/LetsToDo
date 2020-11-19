@@ -57,6 +57,7 @@
 
 .list_item {
   display: flex;
+  align-self: flex-start;
   height: 40rpx;
   line-height: 40rpx;
 }
@@ -78,3 +79,4 @@
   font-size: 30rpx;
   text-align: right;
 }
+
