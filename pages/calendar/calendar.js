@@ -1,11 +1,14 @@
-import DataService from  '../../datas/DataService';
-import {LEVEL} from '../../datas/Config';
-import {promiseHandle, log, formatNumber} from '../../utils/util';
-
+import DataService from '../../datas/DataService';
+import { LEVEL } from '../../datas/Config';
+import { promiseHandle, log, formatNumber } from '../../utils/util';
+wx.cloud.init()
+var util = require('../../utils/util.js');
+const db = wx.cloud.database()
+var thedate
 Page({
   data: {
     showMonth: {},
-    data: {showMonth:''},
+    data: { showMonth: '' },
     selectDateText: '',
     pickerDateValue: '',
 
@@ -28,29 +31,45 @@ Page({
     todoTextAreaValue: '',
 
     // 事项列表
-    itemList: ['123132132131',
-  '12313123',  ],
-
-    editItemList: ['123132132131',
-    '12313123',  ],//编辑勾选中的事项id
+    todolist: [],
   },
 
   onLoad() {
     let _this = this;
+    var time = new Date();
+    var month = (time.getMonth()+1)%12;
+    var day = time.getDate();
+    var year = time.getFullYear();
+    var currentdate = year+"-"+month+"-"+day;
+    var list = {}
     
+    db.collection('lists').where({
+      due: currentdate
+    }).get().then(res => {
+      var tmp = res.data;
+      for (var i = 0; i < tmp.length; i++) {
+        list[i] = tmp[i].todo;
+      }
+      this.setData({
+        todolist : list
+      })
+      console.log(this.data.todolist)
+    })
     promiseHandle(wx.getSystemInfo).then((data) => {
       _this.setData({
         updatePanelTop: data.windowHeight
       });
     });
-    
+
     changeDate.call(this);
   },
-  onShow(){
-    if(typeof this.getTabBar =='function'&&
-    this.getTabBar()){
+  onShow() {
+   
+
+    if (typeof this.getTabBar == 'function' &&
+      this.getTabBar()) {
       this.getTabBar().setData({
-        selected:2
+        selected: 2
       })
     }
   },
@@ -64,24 +83,48 @@ Page({
   },
 
   changeDateEvent(e) {
-    const {year, month} = e.currentTarget.dataset;
+    const { year, month } = e.currentTarget.dataset;
     changeDate.call(this, new Date(year, parseInt(month) - 1, 1));
   },
 
   dateClickEvent(e) {
-    const {year, month, date} = e.currentTarget.dataset;
-    const {data} = this.data;
+    var tmp = wx.getStorageSync('todos')
+
+    const { year, month, date } = e.currentTarget.dataset;
+    const { data } = this.data;
     let selectDateText = '';
 
     data['selected']['year'] = year;
     data['selected']['month'] = month;
     data['selected']['date'] = date;
-    
+
     this.setData({ data: data });
-
     changeDate.call(this, new Date(year, parseInt(month) - 1, date));
-  },
 
+    //获取选中的日期
+    var tmpyear = year;
+    var tmpmonth = month;
+    if (tmpmonth < 10) tmpmonth = "0" + tmpmonth;
+    var tmpdate = date;
+    if (tmpdate < 10) tmpdate = "0" + tmpdate;
+    thedate = tmpyear + "-" + tmpmonth + "-" + tmpdate
+    console.log(thedate)
+    //数据库中获取对应日期的事项
+    var list = {}
+    db.collection('lists').where({
+      due: thedate
+    }).get().then(res => {
+      var tmp = res.data;
+      for (var i = 0; i < tmp.length; i++) {
+        list[i] = tmp[i].todo;
+      }
+      console.log(list)
+      this.setData({
+        todolist : list
+      })
+      console.log(this.data.todolist)
+    })
+  },
   showUpdatePanelEvent() {
     showUpdatePanel.call(this);
     this.setData({ isUpdateMode: true });
@@ -91,53 +134,12 @@ Page({
     closeUpdatePanel.call(this);
   },
 
-  // 事项列表项长按动作事件
-  // listItemLongTapEvent(e) {
-  //   const {id} = e.currentTarget.dataset;
-  //   let _this = this;
-  //   //如果不是编辑勾选模式下才生效
-  //     const itemList = ['详情', '删除'];
-  //     promiseHandle(wx.showActionSheet, { itemList: itemList, itemColor: '#2E2E3B' })
-  //       .then((res) => {
-  //         if (!res.cancel) {
-  //           switch (itemList[res.tapIndex]) {
-  //             case '详情':
-  //               wx.navigateTo({ url: '../detail/detail?id=' + id });
-  //               break;
-  //             case '删除':
-  //               new DataService({ _id: id }).delete().then(() => {
-  //                 loadItemListData.call(_this);
-  //               });
-  //               break;
-  //           }
-  //         }
-  //       });
-  // },
-
-  // 事项标题文本框变化事件
-  todoInputChangeEvent(e) {
-    const {value} = e.detail;
-    this.setData({ todoInputValue: value });
-  },
-
-  //事项内容多行文本域变化事件
-  todoTextAreaChangeEvent(e) {
-    const {value} = e.detail;
-    this.setData({ todoTextAreaValue: value });
-  },
-
-  // // 选择事项等级事件  
-  // levelClickEvent(e) {
-  //   const {level} = e.currentTarget.dataset;
-  //   this.setData({ levelSelectedValue: level });
-  // },
-
-  // 保存事项数据
+  
   saveDataEvent() {
-    const {todoInputValue, todoTextAreaValue, levelSelectedValue} = this.data;
-    const {year, month, date} = this.data.data.selected;
+    const { todoInputValue, todoTextAreaValue, levelSelectedValue } = this.data;
+    const { year, month, date } = this.data.data.selected;
     if (todoInputValue !== '') {
-    
+
       let promise = new DataService({
         title: todoInputValue,
         content: todoTextAreaValue,
@@ -155,7 +157,7 @@ Page({
         });
         loadItemListData.call(this);
       })
-      
+
       closeUpdatePanel.call(this);
     } else {
       showModal.call(this, '请填写事项内容');
@@ -163,7 +165,7 @@ Page({
   },
 
   listItemClickEvent(e) {
-    const {id} = e.currentTarget.dataset;
+    const { id } = e.currentTarget.dataset;
 
     let data = this.data.itemList || [];
     let editItemList = this.data.editItemList || [];
@@ -249,7 +251,7 @@ function closeUpdatePanel() {
  * 加载事项列表数据
  */
 function loadItemListData() {
-  const {year, month, date} = this.data.data.selected;
+  const { year, month, date } = this.data.data.selected;
   let _this = this;
   DataService.findByDate(new Date(Date.parse([year, month, date].join('-')))).then((data) => {
     _this.setData({ itemList: data });

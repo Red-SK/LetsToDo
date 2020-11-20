@@ -22,30 +22,30 @@ Page({
     }, ],
     cateArr: [
       {
-      icon: 'work',
-      text: '工作'
-    },
-    {
-      icon: 'study',
-      text: "学习"
-    },
-    {
-      icon: 'think',
-      text: '思考'
-    },
-    {
-      icon: 'write',
-      text: '写作'
-    },
-    {
-      icon: 'sport',
-      text: '运动'
-    },
-    {
-      icon: 'read',
-      text: '阅读'
-    },
-  ]
+        icon: 'work',
+        text: '工作'
+      },
+      {
+        icon: 'study',
+        text: "学习"
+      },
+      {
+        icon: 'read',
+        text: '阅读'
+      },
+      {
+        icon: 'write',
+        text: '写作'
+      },
+      {
+        icon: 'sport',
+        text: '运动'
+      },
+      {
+        icon: 'rest',
+        text: '休息'
+      },
+    ]
   },
   onShow: function name(params) {
     var records = wx.getStorageSync('records') || [];

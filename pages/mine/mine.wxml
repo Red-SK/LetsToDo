@@ -1,2 +1,17 @@
-<!--pages/mine/mine.wxml-->
-<text>pages/mine/mine.wxml</text>
+<!-- 展示用户信息 -->
+<view class="header">
+  <image src="{{UserAvatar}}" class="touxiang" bindtap="setUserAvatar"></image>
+  <text wx:if="{{isLogin}}" class="NickName">{{userInfo.nickName}}</text>
+  <!-- 使用 button 来授权登录 -->
+  <button class="login" wx:if='{{!isLogin}}' open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" >授权登录</button>
+</view>
+
+<!-- 意见反馈 -->
+<view wx:if="{{isLogin}}">
+  <button class="button" open-type="feedback">意见反馈</button>
+</view>
+
+<!-- 登出当前帐号 -->
+<view>
+  
+</view>

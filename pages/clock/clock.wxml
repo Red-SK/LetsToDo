@@ -1,4 +1,4 @@
-
+<!--index.wxml-->
 <view hidden="{{clockShow}}">
 
 <view class="slider">

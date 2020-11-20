@@ -1,9 +1,26 @@
 Page({
   data: {
-    text: "This is page data."
+    isLogin: false,
+    UserAvatar: "/images/Default_Img.jpg",
+    UserName: "未登录"
   },
   onLoad: function(options) {
     // Do some initialize when page load.
+  },
+  setUserAvatar:function () {
+    var _this = this;
+    wx.chooseImage({
+      count: 1,
+      // 指定上传原图还是缩略图，默认两个都有
+      sizeType: ['original', 'compressed'],
+      // 指定来源是相机还是相册，默认两个都有
+      sourceType: ['camera','album'],
+      success:function (res) {
+        _this.setData({
+          UserAvatar: res.tempFilePaths
+        })
+      }
+    })
   },
   onShow: function() {
     if (typeof this.getTabBar === 'function' &&
@@ -37,6 +54,15 @@ Page({
   },
   onResize: function() {
     // Do something when page resize
+  },
+  bindGetUserInfo (event) {
+    console.log(event)
+    this.setData({
+      userInfo: event.detail.userInfo,
+      UserAvatar: event.detail.userInfo.avatarUrl,
+      UserName: event.detail.userInfo.nickName,
+      isLogin: true
+    })
   },
   onTabItemTap(item) {
     console.log(item.index)

@@ -1,7 +1,7 @@
 @import "../../calendar/calendar.wxss";
 
 .wrapper {
-    padding-bottom: 160rpx;
+    padding-bottom: 1rpx;
 }
 
 .show-date {/*日历下方文字 2020年11月18日*/

@@ -25,8 +25,8 @@ Page({
         text: "学习"
       },
       {
-        icon: 'think',
-        text: '思考'
+        icon: 'read',
+        text: '阅读'
       },
       {
         icon: 'write',
@@ -37,8 +37,8 @@ Page({
         text: '运动'
       },
       {
-        icon: 'read',
-        text: '阅读'
+        icon: 'rest',
+        text: '休息'
       },
     ]
   },
@@ -55,15 +55,6 @@ Page({
     })
 
   },
-  onShow:function name(params) {
-      if(typeof this.getTabBar =='function'&&
-      this.getTabBar()){
-        this.getTabBar().setData({
-          selected:1 
-        })
-      }
-      
-  },
   sliderChange: function name(params) {
     //console.log(params);
     this.setData({
@@ -77,7 +68,7 @@ Page({
       iconActive: iconActive
     })
     // 选定某件事时，自动设定时间值
-    if(iconActive == 2)
+    if(iconActive == 5)
     {
     //console.log(iconActive);
       this.setData({
@@ -156,6 +147,8 @@ Page({
         ctx.stroke();
         ctx.draw();
       } else {
+        // 设备振动
+        wx.vibrateLong({})
         // 记录倒计时结束的数据
         var records = wx.getStorageSync('records') || [];
         records.unshift({
@@ -212,6 +205,14 @@ Page({
     })
     // 启动计时器，继续倒计时
     this.drawActive();
+  },
+  onShow(){
+    if (typeof this.getTabBar === 'function' &&
+    this.getTabBar()) {
+    this.getTabBar().setData({
+      selected: 1
+    })
+    }
   },
   // 放弃计时
   cancle:function name(params) {

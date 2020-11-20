@@ -54,3 +54,8 @@
     <text>{{data.selectDateText}}</text>
   </view>
 </view>
+<mp-cells ext-class="my-cells" title="待做事项">
+<view wx:for="{{todolist}}">
+  <mp-cell value="{{item}}"></mp-cell>
+</view>
+</mp-cells>

@@ -43,7 +43,6 @@ Page({
           "reward":tmp[i].reward
         }
       }
-  
       wx.setStorageSync('todos',x)
     })
  
