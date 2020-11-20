@@ -105,10 +105,10 @@
 }
 
 .progress .progress_text{
-  width: 160rpx;
+  /* width: 160rpx; */
   height: 60rpx;
   line-height: 60rpx;
-  font-size: 35rpx;
+  font-size: 70rpx;
   color:white;
   position: absolute;
   left: 120rpx;
