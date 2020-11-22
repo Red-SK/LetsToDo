@@ -65,7 +65,33 @@ Page({
   },
   onShow() {
    
+    let _this = this;
+    var time = new Date();
+    var month = (time.getMonth()+1)%12;
+    var day = time.getDate();
+    var year = time.getFullYear();
+    var currentdate = year+"-"+month+"-"+day;
+    var list = {}
+    
+    db.collection('lists').where({
+      due: currentdate
+    }).get().then(res => {
+      var tmp = res.data;
+      for (var i = 0; i < tmp.length; i++) {
+        list[i] = tmp[i].todo;
+      }
+      this.setData({
+        todolist : list
+      })
+      console.log(this.data.todolist)
+    })
+    promiseHandle(wx.getSystemInfo).then((data) => {
+      _this.setData({
+        updatePanelTop: data.windowHeight
+      });
+    });
 
+    changeDate.call(this);
     if (typeof this.getTabBar == 'function' &&
       this.getTabBar()) {
       this.getTabBar().setData({
@@ -88,7 +114,7 @@ Page({
   },
 
   dateClickEvent(e) {
-    var tmp = wx.getStorageSync('todos')
+    
 
     const { year, month, date } = e.currentTarget.dataset;
     const { data } = this.data;

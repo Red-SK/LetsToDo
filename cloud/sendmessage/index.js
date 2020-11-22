@@ -9,14 +9,14 @@ cloud.init({
 exports.main = async (event, context) => {
   try{
     const result=await cloud.openapi.subscribeMessage.send({
-      touser:'ooVwH5lhoa9mZUr6hIfXCfrXuK1Y',//此处需要在主体界面将用户的openid传参传过来
+      touser:event.openid,//此处需要在主体界面将用户的openid传参传过来
       page:'pages/todos/todos',//点击订阅模板消息会进入到的界面
       data:{						//此处要与所选择订阅消息模板的格式对应
         thing1:{
-          value:'11111'
+          value:event.content1
         },
         time2:{
-          value:'2020-10-18'
+          value:event.date1
         },
       },
       templateId: 'D64ZZ89iJVDy26nZa7xpdytlbhbaJr8wDV4W2QWDo9k',

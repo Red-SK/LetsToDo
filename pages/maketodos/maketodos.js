@@ -63,18 +63,12 @@ Page({
       wx.requestSubscribeMessage({
         tmplIds: ['D64ZZ89iJVDy26nZa7xpdytlbhbaJr8wDV4W2QWDo9k'],
         success(res) {
-          // console.log(res)
-          // console.log("before send")
-          // //调用sendmessage云函数
-          // wx.cloud.callFunction({
-          //   name: "sendmessage",
-        
-          // }).then(res => {
-          //   console.log("推送消息成功", res)
-          // }).catch(res => {
-          //   console.log("消息推送失败", res)
-          // })
+          console.log(res)
         },
+        fail(res)
+        {
+          e.detail.value.remind = false;
+        }
       })
     }
 
