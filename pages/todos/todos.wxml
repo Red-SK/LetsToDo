@@ -1,0 +1,28 @@
+<view class="refresh-view" bindtap="maketodos" hover="true" hover-class="refresh-view-hover">
+    <image id="refresh" class="refresh-icon" src="/images/maketodos.png"></image>
+</view>
+
+
+<view class = "todo-page" >
+<swiper indicator-dots="indicatorDots" circular="circular">
+    <swiper-item>
+        <mp-cells title="未完成事项">
+            <mp-checkbox-group prop="checkbox" multi="{{true}}" bindchange="checkboxChange" class="todos"
+                :class="{done:item.checked">
+                <mp-checkbox wx:for="{{checkboxItems}}" wx:key="value" label="{{item.name}}" value="{{item.value}}"
+                    checked="{{item.checked}}"></mp-checkbox>
+            </mp-checkbox-group>
+        </mp-cells>
+    </swiper-item>
+
+    <swiper-item>
+        <mp-cells title="奖励事项" >
+            <mp-checkbox-group prop="checkbox" multi="{{true}}" bindchange="checkboxChange2" class="reward"
+                :class="{done:item.checked">
+                <mp-checkbox wx:for="{{checkboxItems2}}" wx:key="value" label="{{item.name}}" value="{{item.value}}"
+                    checked="{{item.checked}}"></mp-checkbox>
+            </mp-checkbox-group>
+        </mp-cells>
+    </swiper-item>
+</swiper>
+</view>

@@ -1,0 +1,41 @@
+<view class="sum">
+  <view class="sum_item" wx:for="{{sum}}">
+    <view class="sum_item_title">
+      {{item.title}}
+    </view>
+    <view class="sum_item_val">
+      {{item.val}}
+    </view>
+  </view>
+</view>
+
+<view class="detail">
+  <!-- 标题 -->
+  <view class="detail_title">
+    <view class="detail_title_text">分类统计</view>
+    <view class="detail_title_type">
+      <text class="{{activeIndex == 0 ? 'active':''}}" bindtap="changeType" data-index="0">今日</text>
+      <text class="{{activeIndex == 1 ? 'active':''}}" bindtap="changeType" data-index="1">历史</text>
+    </view>
+  </view>
+
+  <!-- 时间记录 -->
+  <view class="detail_list" wx:if="{{list.length > 0}}">
+    <!-- 遍历 list -->
+    <view class="list_item" wx:for="{{list}}">
+      <view class="list_item_date">{{item.date}}</view>
+      <!-- <view class="list_item_cate" wx:if="{{item.cate > -1}} ">{{cateArr[item.cate].text}}</view> -->
+      <!-- <view class="list_item_cate" wx:if="{{item.cate == -1}}">未定义</view> -->
+      <view  class="list_item_cate">
+        <view wx:if="{{item.cate > -1}} ">{{cateArr[item.cate].text}}</view>
+        <view wx:if="{{item.cate == -1}}">未定义</view>
+      </view>
+      <view class="list_item_time">{{item.time}}分钟</view>
+    </view>
+  </view>
+
+  <view class="detail_list" wx:if="{{list.length == 0}}">
+    暂无数据
+  </view>
+
+</view>

@@ -1,0 +1,55 @@
+<view class="page-body">
+  <form catchsubmit="formSubmit" catchreset="formReset">
+    <view class="page-section">
+      <view class="page-section-title"></view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__bd">
+            <input class="weui-input" name="todo" placeholder="输入代办事项" />
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="divLine"></view>
+    <view class="page-section page-section-gap">
+
+      <view class="refresh-view">
+        <image id="refresh" class="refresh-icon" src="/images/note.png"></image>
+      </view>
+      <switch name="remind" color="#008c8c" />
+    </view>
+    <view class="divLine-light"></view>
+    <view class="page-section">
+      <view class="section">
+        <view class="section__title"></view>
+        <picker mode="date" value="{{date}}" start="1994-7-17" end="2035-9-6" bindchange="bindDateChange">
+          <view class="picker">
+            <image src='/images/picktime.png' class='picktimeicon'></image> {{date}}
+          </view>
+        </picker>
+      </view>
+      <!-- <picker class='time-picker' mode="multiSelector" bindchange="bindStartMultiPickerChange" bindtap='pickerTap'
+        bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+        
+      </picker> -->
+    </view>
+    <view class="divLine"></view>
+
+    <view class="page-section-reward">
+      <view class="refresh-view" hover="true">
+        <image id="refresh" class="refresh-icon" src="/images/game.png"></image>
+      </view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__bd" style="margin: 60rpx 0">
+            <input class="weui-input" name="reward" placeholder="输入奖励事项" />
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="btn-area">
+      <button formType="submit">新建</button>
+    </view>
+  </form>
+
+</view>

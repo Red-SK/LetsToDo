@@ -1,0 +1,10 @@
+<!-- 用户 openid -->
+<view class="userinfo">
+ 
+    <view class = 'login-icon'>
+      <image src='/images/wx_login.png' ></image>
+    </view>
+    <view class="userinfo-nickname-wrapper">
+      <button class="program-in" bindtap="onGetOpenid"> LetsToDo!</button>
+    </view>
+</view>
