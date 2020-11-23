@@ -5,7 +5,7 @@
 }
 
 .show-date {/*日历下方文字 2020年11月18日*/
-    margin: 30rpx 0;
+    margin: 10rpx 0;
     text-align: center;
     font-size: 50rpx;
     font-weight: lighter;
@@ -69,6 +69,18 @@
     font-size: 33rpx;
     margin-top: 30rpx;
     color :#000000
+}
+.weui-cells__title.weui-cells__title
+{
+   font-size: 50rpx;
+   color:#008c8c;
+   padding-left: 0rpx;
+}
+.weui-cell__bd.weui-cell__bd{
+    font-size: 35rpx;
+}
+.weui-cell.cell--weui-cell{
+    padding: 10rpx;
 }
 
 .mask {/*跳出错误弹窗时背景*/
@@ -214,4 +226,7 @@
 }
 .updatePanel .footer .btn.primary:active {
     background: #009191
+}
+.roll{
+    height: 400rpx;
 }

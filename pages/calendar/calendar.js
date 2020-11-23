@@ -102,7 +102,9 @@ Page({
   onReady() {
     loadItemListData.call(this);
   },
-
+  onHide(){
+    console.log("hide")
+  },
   datePickerChangeEvent(e) {
     const date = new Date(Date.parse(e.detail.value));
     changeDate.call(this, new Date(date.getFullYear(), date.getMonth(), 1));

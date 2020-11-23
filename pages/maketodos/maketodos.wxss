@@ -83,6 +83,7 @@
 .btn-area {
   margin-top: 200rpx;
   height: 100rpx;
+  color:white;
 }
 
 button {
