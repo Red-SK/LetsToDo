@@ -66,7 +66,7 @@ Page({
           console.log(res)
         },
         fail(res)
-        {
+        { 
           e.detail.value.remind = false;
         }
       })
