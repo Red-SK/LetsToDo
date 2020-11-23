@@ -70,17 +70,19 @@
     margin-top: 30rpx;
     color :#000000
 }
- .weui-cells__title.weui-cells__title
+.weui-cells__title.weui-cells__title
 {
-    margin-bottom: 10rpx;
-    margin-top: 10rpx;
+   font-size: 50rpx;
+   color:#008c8c;
+   padding-left: 0rpx;
 }
 .weui-cell__bd.weui-cell__bd{
-    font-size: medium;
+    font-size: 35rpx;
 }
 .weui-cell.cell--weui-cell{
     padding: 10rpx;
 }
+
 .mask {/*跳出错误弹窗时背景*/
     position: fixed;
     top: 0;

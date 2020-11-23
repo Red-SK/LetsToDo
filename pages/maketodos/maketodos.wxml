@@ -48,7 +48,7 @@
       </view>
     </view>
     <view class="btn-area">
-      <button formType="submit">新建</button>
+      <button formType="submit" style="color:white">新建</button>
     </view>
   </form>
 

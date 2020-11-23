@@ -18,7 +18,10 @@
 .refresh-view-hover {
   background: #eee;
 }
-
+.weui-cells__title.weui-cells__title{
+  font-size: 45rpx;
+  color:#008c8c;
+}
 .refresh-icon {
 
   width: 100rpx;
@@ -35,7 +38,9 @@
   height: 5rpx;
  }
 
-swiper{height:2000rpx}
+swiper{
+  height: 2430rpx;
+}
 swiper-item{
   height:100%;
 }
