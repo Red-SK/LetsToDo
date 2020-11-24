@@ -14,7 +14,8 @@
 }
 
 .weui-input {
-  margin-bottom: 130rpx;
+
+  height: 230rpx;
 }
 
 .refresh-view {

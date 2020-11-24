@@ -104,6 +104,7 @@ Page({
   },
   onHide(){
     console.log("hide")
+
   },
   datePickerChangeEvent(e) {
     const date = new Date(Date.parse(e.detail.value));
@@ -287,16 +288,16 @@ function loadItemListData() {
 
 }
 
-/**
- * 重置是项列表勾选记录
- */
-function resetItemListDataCheck() {
-  let data = this.data.itemList || [];
-  for (let i = 0, len = data.length; i < len; i++) {
-    data[i]['checked'] = false;
-  }
-  this.setData({ itemList: data });
-}
+// /**
+//  * 重置是项列表勾选记录
+//  */
+// function resetItemListDataCheck() {
+//   let data = this.data.itemList || [];
+//   for (let i = 0, len = data.length; i < len; i++) {
+//     data[i]['checked'] = false;
+//   }
+//   this.setData({ itemList: data });
+// }
 
 /**
  * 变更日期数据
