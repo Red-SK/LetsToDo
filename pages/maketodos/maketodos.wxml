@@ -1,3 +1,4 @@
+
 <view class="page-body">
   <form catchsubmit="formSubmit" catchreset="formReset">
     <view class="page-section">
@@ -5,7 +6,7 @@
       <view class="weui-cells weui-cells_after-title">
         <view class="weui-cell weui-cell_input">
           <view class="weui-cell__bd">
-            <textarea class="weui-input" name="todo" placeholder="输入代办事项(140字以内）" />
+            <textarea class="weui-input" name="todo" placeholder="输入代办事项(140字以内）" show-confirm-bar='{{false}}' />
             </view>
         </view>
       </view>
@@ -17,7 +18,8 @@
       </view>
       <switch name="remind" color="#008c8c" ></switch> 
     </view>
-    <view class="divLine-light"></view>
+
+    <view class="divLine-light">当日早上六点提醒</view>
     <view class="page-section">
       <view class="section">
         <view class="section__title"></view>
@@ -37,8 +39,7 @@
       <view class="weui-cells weui-cells_after-title">
         <view class="weui-cell weui-cell_input">
           <view class="weui-cell__bd" style="margin: 60rpx 0">
-           
-            <textarea auto-focus="true" class="weui-input"  name="reward" placeholder="输入奖励事项(140字以内)" />
+            <textarea  class="weui-input"  name="reward" placeholder="输入奖励事项(140字以内)" show-confirm-bar='{{false}}' />
           </view>
         </view>
       </view>

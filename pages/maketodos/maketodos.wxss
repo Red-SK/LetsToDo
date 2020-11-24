@@ -5,17 +5,33 @@
   height: 13rpx;
   width: 100%;
 }
+.weui-cells.weui-cells_after-title{
+  margin-top: 0rpx;
+}
+
 
 .divLine-light {
-  background: #808080;
-  opacity: 0.1;
+  background: #008c8c;
+  opacity: 0.3;
+
   height: 5rpx;
   width: 100%;
+  text-align: right;
+
+  color: #008c8c
 }
 
 .weui-input {
 
   height: 230rpx;
+}
+.six-text{
+  margin-top: 15rpx;
+  margin-right: 55rpx;
+  bottom: 10rpx;
+  right: 670rpx;
+  width: 75rpx;
+  height: 75rpx;
 }
 
 .refresh-view {
@@ -48,7 +64,6 @@
   width: 75rpx;
   height: 75rpx;
   margin-top: 15rpx;
-  margin-bottom: 30rpx;
 }
 
 .wx-switch-input {
