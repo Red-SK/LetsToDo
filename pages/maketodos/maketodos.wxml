@@ -1,3 +1,4 @@
+
 <view class="page-body">
   <form catchsubmit="formSubmit" catchreset="formReset">
     <view class="page-section">
@@ -5,20 +6,20 @@
       <view class="weui-cells weui-cells_after-title">
         <view class="weui-cell weui-cell_input">
           <view class="weui-cell__bd">
-            <input class="weui-input" name="todo" placeholder="输入代办事项" />
-          </view>
+            <textarea class="weui-input" name="todo" placeholder="输入代办事项(140字以内）" show-confirm-bar='{{false}}' />
+            </view>
         </view>
       </view>
     </view>
     <view class="divLine"></view>
     <view class="page-section page-section-gap">
-
       <view class="refresh-view">
         <image id="refresh" class="refresh-icon" src="/images/note.png"></image>
       </view>
-      <switch name="remind" color="#008c8c" />
+      <switch name="remind" color="#008c8c" ></switch> 
     </view>
-    <view class="divLine-light"></view>
+
+    <view class="divLine-light">当日早上六点提醒</view>
     <view class="page-section">
       <view class="section">
         <view class="section__title"></view>
@@ -28,13 +29,9 @@
           </view>
         </picker>
       </view>
-      <!-- <picker class='time-picker' mode="multiSelector" bindchange="bindStartMultiPickerChange" bindtap='pickerTap'
-        bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
-        
-      </picker> -->
     </view>
     <view class="divLine"></view>
-
+       
     <view class="page-section-reward">
       <view class="refresh-view" hover="true">
         <image id="refresh" class="refresh-icon" src="/images/game.png"></image>
@@ -42,7 +39,7 @@
       <view class="weui-cells weui-cells_after-title">
         <view class="weui-cell weui-cell_input">
           <view class="weui-cell__bd" style="margin: 60rpx 0">
-            <input class="weui-input" name="reward" placeholder="输入奖励事项" />
+            <textarea  class="weui-input"  name="reward" placeholder="输入奖励事项(140字以内)" show-confirm-bar='{{false}}' />
           </view>
         </view>
       </view>

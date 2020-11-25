@@ -108,9 +108,7 @@ Page({
   //勾选后的操作
   checkboxChange: function (e) {
     var tmpreward = wx.getStorageSync('reward')
-    console.log(tmpreward)
     var tmptodolist = wx.getStorageSync('todos')
-    console.log(tmptodolist)
     console.log('checkbox发生change事件，携带value值为：', e.detail.value); //对应的事件ID
     var tmp = {};
     var index = 0;

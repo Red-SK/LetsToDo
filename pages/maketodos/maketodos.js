@@ -71,7 +71,6 @@ Page({
         }
       })
     }
-
     console.log('form发生了submit事件，携带数据为', e.detail.value)
     //如果submit的 todo为空的return 
     if (e.detail.value.todo.length == 0) {

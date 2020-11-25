@@ -5,7 +5,6 @@ const db = wx.cloud.database()
 const todos = db.collection('lists')
 Page({
   data: {
-    text: "This is page data."
   },
   //从数据库中获取当前用户的所有事项数据
   setfromDB:function(){

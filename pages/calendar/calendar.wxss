@@ -75,6 +75,8 @@
    font-size: 50rpx;
    color:#008c8c;
    padding-left: 0rpx;
+   padding-top: 0rpx;
+   margin-top: 0rpx;
 }
 .weui-cell__bd.weui-cell__bd{
     font-size: 35rpx;
