@@ -1,5 +1,7 @@
 {
-  "navigationBarTitleText": "番茄钟",
+  "usingComponents": {},
+  "navigationBarTitleText": "LetsToDo",
   "navigationBarBackgroundColor":"#008C8C",
   "navigationBarTextStyle":"white"
 }
+
