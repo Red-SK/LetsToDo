@@ -97,13 +97,36 @@ Page({
       this.getTabBar().setData({
         selected: 2
       })
+<<<<<<< HEAD
     }
+=======
+    };
+    console.log(this.data)
+>>>>>>> origin/111800527yf
   },
   onReady() {
     loadItemListData.call(this);
   },
   onHide(){
+<<<<<<< HEAD
     console.log("hide")
+=======
+    var time = new Date();
+    var month = (time.getMonth()+1)%12;
+    var day = time.getDate();
+    var year = time.getFullYear();
+    var date = year+"-"+month+"-"+day;
+
+    changeDate.call(this, new Date(year, parseInt(month) - 1, date));
+    pickerDateValue: year + '-' + month;
+    selectDateText:year + '年' + month + '月' + day + '日';
+    
+    this.data.data.selected.year = year;
+    this.data.data.selected.month = month;
+    this.data.data.selected.date = day;
+
+    console.log("hide");
+>>>>>>> origin/111800527yf
   },
   datePickerChangeEvent(e) {
     const date = new Date(Date.parse(e.detail.value));
