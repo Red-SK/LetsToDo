@@ -97,21 +97,16 @@ Page({
       this.getTabBar().setData({
         selected: 2
       })
-<<<<<<< HEAD
+
     }
-=======
-    };
-    console.log(this.data)
->>>>>>> origin/111800527yf
-  },
+
+    },
+ 
   onReady() {
     loadItemListData.call(this);
   },
   onHide(){
-<<<<<<< HEAD
-    console.log("hide")
-<<<<<<< HEAD
-=======
+
     var time = new Date();
     var month = (time.getMonth()+1)%12;
     var day = time.getDate();
@@ -127,10 +122,6 @@ Page({
     this.data.data.selected.date = day;
 
     console.log("hide");
->>>>>>> origin/111800527yf
-=======
-
->>>>>>> origin/todos-day1
   },
   datePickerChangeEvent(e) {
     const date = new Date(Date.parse(e.detail.value));

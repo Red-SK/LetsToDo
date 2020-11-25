@@ -16,7 +16,7 @@
       <view class="refresh-view">
         <image id="refresh" class="refresh-icon" src="/images/note.png"></image>
       </view>
-      <switch name="remind" color="#008c8c" ></switch> 
+      <switch name="remind" color="#008c8c" bindchange="bindremind"></switch> 
     </view>
 
     <view class="divLine-light">当日早上六点提醒</view>

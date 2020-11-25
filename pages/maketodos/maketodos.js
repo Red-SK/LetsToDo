@@ -5,7 +5,7 @@ const db = wx.cloud.database()
 var datee = new Date();
 var remind = false;
 var time = util.formatTime(new Date());
-var month = (datee.getMonth()+1)%12;
+var month = (datee.getMonth() + 1) % 12;
 var day = datee.getDate();
 var year = datee.getFullYear();
 var nowday = year + "-" + month + "-" + day
@@ -54,23 +54,19 @@ Page({
       date: e.detail.value
     })
   },
-
-  //提交表单方法——————————————————————————————————————————————————————————
-  formSubmit(e) {
-    console.log(app.globalData.openid)
-    var time = util.formatTime(new Date());
-    if (e.detail.value.remind) {
+  bindremind(e) {
+    if(e.detail.value ){
       wx.requestSubscribeMessage({
         tmplIds: ['D64ZZ89iJVDy26nZa7xpdytlbhbaJr8wDV4W2QWDo9k'],
-        success(res) {
-          console.log(res)
-        },
-        fail(res)
-        { 
-          e.detail.value.remind = false;
-        }
-      })
-    }
+        success(res) { console.log(res);  },
+        fail(res) { console.log(res) }
+    })
+  }
+},
+  //提交表单方法——————————————————————————————————————————————————————————
+  formSubmit(e) {
+    console.log(e.detail.value.remind)
+    var time = util.formatTime(new Date());
     console.log('form发生了submit事件，携带数据为', e.detail.value)
     //如果submit的 todo为空的return 
     if (e.detail.value.todo.length == 0) {
