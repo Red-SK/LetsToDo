@@ -1,0 +1,20 @@
+function baojian1(money){
+    return money>=200?'至尊享受':'基本按摩'
+
+}
+function baojian2(money){
+    return money>=1000?'双人服务':'担任服务'
+}
+module.exports={
+    baojian1,baojian2
+}
+
+const dabaojian =require('./dabaojian.js')
+const {baojian1,baojian2}=dabaojian
+const { TestScheduler } = require("jest");
+const { baojian1 } = require("./dabaojian");
+
+Test('baojan1fangfa-300 ',()=>{
+    expect(baojian1(300)).toBe('至尊服务')
+
+})
