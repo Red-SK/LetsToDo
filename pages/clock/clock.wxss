@@ -1,0 +1,129 @@
+
+
+.slider {
+  width: 650rpx;
+  margin: 40rpx auto;
+}
+
+.task_text {
+  height: 120rpx;
+  margin: 40rpx auto;
+  text-align: center;
+}
+
+.task_text .task_title {
+  font-size: 35rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+}
+
+.task_text .task_desc {
+  font-size: 30rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  color: #999999;
+}
+
+.task_cate {
+  width: 660rpx;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.task_cate .cate_item {
+  width: 220rpx;
+  height: 130rpx;
+  text-align: center;
+  margin-bottom: 50rpx;
+}
+
+.task_cate .cate_item .cate_icon {
+  height: 70rpx;
+}
+
+.task_cate .cate_item .cate_icon image {
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.task_cate .cate_item .cate_text {
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 30rpx;
+}
+/* 选中改变字体颜色 */
+.task_cate .cate_item .cate_text_active {
+  color: #008C8C;
+}
+
+.start {
+  margin: 40rpx auto;
+  width: 280rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  text-align: center;
+  color: white;
+  background-color: #008C8C;
+  border-radius: 50rpx;
+  border: 2rpx solid #008C8C;
+}
+
+.record {
+  margin: 40rpx auto;
+  width: 280rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  text-align: center;
+  color: white;
+  background-color: #008C8C;
+  border-radius: 50rpx;
+  border: 2rpx solid #008C8C;
+}
+
+/* 时钟页面的样式 */
+.clock{
+  overflow: hidden;
+  /* height: 3000rpx; */
+  background: #008C8C;
+}
+
+.progress{
+  width: 400rpx;
+  height: 400rpx;
+  background:#008C8C;
+  margin: 140rpx auto;
+  position: relative;
+}
+
+.progress .progress_bg, .progress .progress_active{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 400rpx;
+  height: 400rpx;
+}
+
+.progress .progress_text{
+  width: 160rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 70rpx;
+  color:white;
+  position: absolute;
+  left: 120rpx;
+  top: 170rpx;
+  text-align: center;
+}
+
+/* 完成 暂停 放弃按钮的样式 */
+.btns .okBtn, .btns .pauseBtn, .btns .continueBtn,.btns .cancleBtn{
+  width: 280rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  text-align: center;
+  color: white;
+  border-radius: 50rpx;
+  margin: 0 auto 20rpx auto;
+  border: 3rpx solid white;
+} 
