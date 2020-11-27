@@ -1,0 +1,4 @@
+/* /components/index.wxss */
+.index {
+  color: green;
+}
