@@ -9,6 +9,7 @@ Page({
     ],
     checkboxItems2: [
     ],
+    list:'123'
   },
   //跳转创建事项界面
   maketodos: function () {

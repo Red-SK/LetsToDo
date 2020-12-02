@@ -37,12 +37,14 @@ Page({
   onLoad() {
     let _this = this;
     var time = new Date();
-    var month = (time.getMonth()+1)%12;
+    var month = (time.getMonth())%12+1;
     var day = time.getDate();
+    if(day<10)day = "0"+day;
     var year = time.getFullYear();
     var currentdate = year+"-"+month+"-"+day;
     var list = {}
-    
+    console.log("here")
+    console.log(currentdate)
     db.collection('lists').where({
       due: currentdate
     }).get().then(res => {
@@ -67,8 +69,9 @@ Page({
    
     let _this = this;
     var time = new Date();
-    var month = (time.getMonth()+1)%12;
+    var month = (time.getMonth())%12+1;
     var day = time.getDate();
+    if(day<10)day = "0"+day;
     var year = time.getFullYear();
     var currentdate = year+"-"+month+"-"+day;
     var list = {}
@@ -108,8 +111,9 @@ Page({
   onHide(){
 
     var time = new Date();
-    var month = (time.getMonth()+1)%12;
+    var month = (time.getMonth())%12+1;
     var day = time.getDate();
+  //  if(day <10)day ="0"+day;
     var year = time.getFullYear();
     var date = year+"-"+month+"-"+day;
 
@@ -120,8 +124,6 @@ Page({
     this.data.data.selected.year = year;
     this.data.data.selected.month = month;
     this.data.data.selected.date = day;
-
-    console.log("hide");
   },
   datePickerChangeEvent(e) {
     const date = new Date(Date.parse(e.detail.value));

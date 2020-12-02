@@ -1,0 +1,27 @@
+{
+  "name": "double-ten",
+  "version": "1.0.0",
+  "description": "软件工程第十组",
+  "main": "app.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "jest": "^26.6.3",
+    "miniprogram-automator": "^0.10.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pikapika-sk/Double-Ten.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Pikapika-sk/Double-Ten/issues"
+  },
+  "homepage": "https://github.com/Pikapika-sk/Double-Ten#readme"
+}
